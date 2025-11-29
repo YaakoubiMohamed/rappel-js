@@ -508,6 +508,28 @@ for (let i = 1; i <= 5; i++) {
             
             // Update total score display
             this.updateTotalScoreDisplay();
+            
+            // Launch confetti effect
+            if (window.app && window.app.confetti) {
+                window.app.confetti.launch(100);
+            }
+            
+            // Launch starburst particle effect
+            if (window.app && window.app.particles) {
+                const rect = card.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+                window.app.particles.createStarburstEffect(centerX, centerY, 40);
+            }
+            
+            // Show celebration toast
+            if (window.app && window.app.toast) {
+                window.app.toast.show(
+                    `Bravo! Vous avez gagné ${exercise.points} points! 🎉`,
+                    'success',
+                    4000
+                );
+            }
         } else {
             this.saveScore(exerciseId, false, 0);
         }
