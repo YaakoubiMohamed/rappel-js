@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚀 Apprendre JavaScript - Guide Interactif</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-code"></i>
+                <h1>JavaScript Interactive</h1>
+            </div>
+            <nav class="nav-menu">
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="progress-btn" id="progressBtn">
+                    <i class="fas fa-chart-line"></i>
+                    <span id="progressText">0%</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Toggle -->
+    <button class="mobile-menu-toggle" id="mobileMenuToggle">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="main-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h3>📚 Cours JavaScript</h3>
+                <button class="sidebar-toggle" id="sidebarToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <h4><i class="fas fa-database"></i> Variables & Structures</h4>
+                    <ul>
+                        <li><a href="#" data-section="variables" data-anchor="">Introduction</a></li>
+                        <li><a href="#" data-section="variables" data-anchor="types-de-donnees-en-javascript">Types de Données</a></li>
+                        <li><a href="#" data-section="variables" data-anchor="declaration-de-variables-var-let-const">var, let, const</a></li>
+                        <li><a href="#" data-section="variables" data-anchor="structures-conditionnelles">Structures Conditionnelles</a></li>
+                        <li><a href="#" data-section="variables" data-anchor="boucles">Boucles</a></li>
+                        <li><button class="btn-exercise-sidebar" onclick="loadExercises('variables')"><i class="fas fa-dumbbell"></i> Exercices</button></li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h4><i class="fas fa-font"></i> Strings (Chaînes)</h4>
+                    <ul>
+                        <li><a href="#" data-section="strings" data-anchor="">Introduction aux Strings</a></li>
+                        <li><a href="#" data-section="strings" data-anchor="proprietes-essentielles">Propriétés Essentielles</a></li>
+                        <li><a href="#" data-section="strings" data-anchor="methodes-de-manipulation">Méthodes de Manipulation</a></li>
+                        <li><button class="btn-exercise-sidebar" onclick="loadExercises('strings')"><i class="fas fa-dumbbell"></i> Exercices</button></li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h4><i class="fas fa-list"></i> Arrays (Tableaux)</h4>
+                    <ul>
+                        <li><a href="#" data-section="arrays" data-anchor="">Introduction aux Arrays</a></li>
+                        <li><a href="#" data-section="arrays" data-anchor="methodes-de-modification">Méthodes de Modification</a></li>
+                        <li><a href="#" data-section="arrays" data-anchor="methodes-diteration">Méthodes d'Itération</a></li>
+                        <li><button class="btn-exercise-sidebar" onclick="loadExercises('arrays')"><i class="fas fa-dumbbell"></i> Exercices</button></li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h4><i class="fas fa-cube"></i> Objects (Objets)</h4>
+                    <ul>
+                        <li><a href="#" data-section="objects" data-anchor="">Introduction aux Objets</a></li>
+                        <li><a href="#" data-section="objects" data-anchor="seance-1--fondamentaux-des-objets">Fondamentaux des Objets</a></li>
+                        <li><a href="#" data-section="objects" data-anchor="seance-2--concepts-avances">Concepts Avancés</a></li>
+                        <li><button class="btn-exercise-sidebar" onclick="loadExercises('objects')"><i class="fas fa-dumbbell"></i> Exercices</button></li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h4><i class="fas fa-arrow-right"></i> Arrow Functions</h4>
+                    <ul>
+                        <li><a href="#" data-section="arrow" data-anchor="">Introduction</a></li>
+                        <li><a href="#" data-section="arrow" data-anchor="definition-et-syntaxe">Syntaxe</a></li>
+                        <li><a href="#" data-section="arrow" data-anchor="comportement-de-this">Le mot-clé 'this'</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="btn-playground" id="openPlayground">
+                    <i class="fas fa-play-circle"></i>
+                    Terrain de Jeu
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="content" id="content">
+            <div class="content-header">
+                <h1>🚀 Bienvenue sur JavaScript Interactive</h1>
+                <p class="subtitle">Apprenez JavaScript de manière interactive et ludique !</p>
+            </div>
+
+            <div class="welcome-section">
+                <div class="feature-cards">
+                    <div class="feature-card" data-navigate="variables">
+                        <div class="feature-icon">🔧</div>
+                        <h3>Variables & Structures</h3>
+                        <p>Apprenez les bases : variables, types, conditions et boucles</p>
+                        <button class="btn-primary">Commencer</button>
+                    </div>
+
+                    <div class="feature-card" data-navigate="strings">
+                        <div class="feature-icon">📝</div>
+                        <h3>Strings</h3>
+                        <p>Maîtrisez la manipulation de texte en JavaScript</p>
+                        <button class="btn-primary">Commencer</button>
+                    </div>
+
+                    <div class="feature-card" data-navigate="arrays">
+                        <div class="feature-icon">📊</div>
+                        <h3>Arrays</h3>
+                        <p>Gérez des collections de données avec les tableaux</p>
+                        <button class="btn-primary">Commencer</button>
+                    </div>
+
+                    <div class="feature-card" data-navigate="objects">
+                        <div class="feature-icon">📦</div>
+                        <h3>Objects</h3>
+                        <p>Structurez vos données avec les objets</p>
+                        <button class="btn-primary">Commencer</button>
+                    </div>
+
+                    <div class="feature-card" data-navigate="arrow">
+                        <div class="feature-icon">🏹</div>
+                        <h3>Arrow Functions</h3>
+                        <p>Écrivez des fonctions modernes et concises</p>
+                        <button class="btn-primary">Commencer</button>
+                    </div>
+
+                    <div class="feature-card" id="playgroundCard">
+                        <div class="feature-icon">🎮</div>
+                        <h3>Terrain de Jeu</h3>
+                        <p>Testez votre code en temps réel</p>
+                        <button class="btn-primary">Essayer</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <h2>✨ Fonctionnalités</h2>
+                <div class="features-grid">
+                    <div class="info-card">
+                        <i class="fas fa-play-circle"></i>
+                        <h4>Code Interactif</h4>
+                        <p>Testez chaque exemple directement dans votre navigateur</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-clipboard-check"></i>
+                        <h4>Quiz & Exercices</h4>
+                        <p>Validez vos connaissances avec des exercices pratiques</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-chart-line"></i>
+                        <h4>Suivi de Progression</h4>
+                        <p>Suivez votre apprentissage étape par étape</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-moon"></i>
+                        <h4>Mode Sombre</h4>
+                        <p>Apprenez confortablement jour et nuit</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Code Playground Modal -->
+    <div class="modal" id="playgroundModal">
+        <div class="modal-content playground-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-play-circle"></i> Terrain de Jeu JavaScript</h2>
+                <button class="close-modal" id="closePlayground">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="playground-container">
+                <div class="editor-section">
+                    <div class="editor-header">
+                        <span>📝 Éditeur</span>
+                        <button class="btn-run" id="runCode">
+                            <i class="fas fa-play"></i> Exécuter
+                        </button>
+                    </div>
+                    <textarea id="codeEditor" class="code-editor" placeholder="// Écrivez votre code JavaScript ici...
+console.log('Bonjour le monde!');
+
+let nom = 'Alice';
+let age = 25;
+
+console.log(`Je m'appelle ${nom} et j'ai ${age} ans.`);"></textarea>
+                </div>
+                <div class="output-section">
+                    <div class="output-header">
+                        <span>📊 Console</span>
+                        <button class="btn-clear" id="clearOutput">
+                            <i class="fas fa-trash"></i> Effacer
+                        </button>
+                    </div>
+                    <div id="codeOutput" class="code-output"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Progress Modal -->
+    <div class="modal" id="progressModal">
+        <div class="modal-content progress-modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-chart-line"></i> Votre Progression</h2>
+                <button class="close-modal" id="closeProgress">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="progress-container">
+                <div class="progress-circle">
+                    <svg width="200" height="200">
+                        <circle cx="100" cy="100" r="90" stroke="#e0e0e0" stroke-width="10" fill="none"/>
+                        <circle id="progressCircle" cx="100" cy="100" r="90" stroke="#4CAF50" stroke-width="10" fill="none"
+                                stroke-dasharray="565.48" stroke-dashoffset="565.48" transform="rotate(-90 100 100)"/>
+                    </svg>
+                    <div class="progress-text" id="progressPercent">0%</div>
+                </div>
+                <div class="progress-details" id="progressDetails"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+    <script src="course-content.js"></script>
+    <script src="content-loader.js"></script>
+    <script src="exercises.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
